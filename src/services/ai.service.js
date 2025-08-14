@@ -28,11 +28,17 @@ async function generateContent(userMessage, conversation = []) {
   ];
 
   // Use the chat completion API for conversational context
-  const result = await genAI.chat({
-    model: "gemini-2.0-flash",
-    messages
-  });
+//   const result = await genAI.chat({
+//     model: "gemini-2.0-flash",
+//     messages
+//   });
+ 
+const result = await genAI.generateText({
+  model: "gemini-2.0-flash",
+  input: messages
+});
 
+ 
   const responseText = result.response[0].content[0].text;
   console.log(responseText);
   return responseText;
